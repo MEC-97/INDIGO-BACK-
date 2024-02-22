@@ -2,9 +2,10 @@ require("dotenv").config();
 const { Sequelize } = require("sequelize");
 const fs = require("fs"); 
 const path = require("path");
-const { DB_USER, DB_HOST,DB_NAME,DB_PASSWORD, DB_PORT} = process.env;
+//const {DATABASE_URL} = process.env;
 
-const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`, {
+// Utiliza la variable de entorno DATABASE_URL para la configuración de Sequelize
+const sequelize = new Sequelize(process.env.DATABASE_URL, {
   dialectOptions: {
     ssl: {
       require: true,
@@ -12,6 +13,7 @@ const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}
     },
   },
 });
+
 
 // let sequelize =
 //   process.env.NODE_ENV === "production"
