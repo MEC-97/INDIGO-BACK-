@@ -5,7 +5,7 @@ const path = require("path");
 //const {DATABASE_URL} = process.env;
 
 // Utiliza la variable de entorno DATABASE_URL para la configuración de Sequelize
-const sequelize = new Sequelize(process.env.DATABASE_URL, {
+const sequelize = new Sequelize(process.env.DATABASE_URL, { 
   dialectOptions: {
     ssl: {
       require: true,
