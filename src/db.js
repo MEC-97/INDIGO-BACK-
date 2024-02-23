@@ -2,10 +2,10 @@ require("dotenv").config();
 const { Sequelize } = require("sequelize");
 const fs = require("fs"); 
 const path = require("path");
-//const {POSTGRES_URL_URL} = process.env; 
+const {POSTGRES_URL_URL} = process.env; 
 
-console.log(process.env.DATABASE_URL);
-const sequelize = new Sequelize(process.env.POSTGRES_URL_URL, {
+console.log(POSTGRES_URL_URL);
+const sequelize = new Sequelize(POSTGRES_URL_URL, {
   dialectOptions: {
     ssl: {
       require: true,
@@ -61,7 +61,7 @@ fs.readdirSync(path.join(__dirname, '/models'))
   //Define las relaciones entre los modelos
   sequelize.models = Object.fromEntries(capsEntries);
   
-    const {  Experiecias} = sequelize.models;
+    const {Experiencias} = sequelize.models;
   
   
 
