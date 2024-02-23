@@ -1,17 +1,18 @@
 require("dotenv").config();
 const { Sequelize } = require("sequelize");
 const fs = require("fs"); 
+const pg = require('pg');
 const path = require("path");
 const {POSTGRES_URL_URL} = process.env; 
 
 console.log(POSTGRES_URL_URL);
 const sequelize = new Sequelize(POSTGRES_URL_URL, {
-  dialectOptions: {
-    ssl: {
-      require: true,
-      rejectUnauthorized: false,
-    },
-  },
+    dialect: 'postgres',
+  dialectModule: pg,
+  ssl: {
+    require: true,
+    rejectUnauthorized: false // This is needed if your SSL certificate is self-signed
+  }
 });
 
 
