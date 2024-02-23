@@ -6,11 +6,6 @@ const {getProducts, obtenerExperienciaPorId, crearProducto, traducciones } = req
 router.get("/experiencias/traducciones" , traducciones)
 router.get("/experiencias" , getProducts)
 router.get("/experiencias/:id" , obtenerExperienciaPorId)
-router.post("/experiencias", (req, res, next) => {
-    console.log('Request received at /experiencias');
-    console.log(req.body);
-    next();
-  }, crearProducto);
-
+router.post("/experiencias", crearProducto);
 
 module.exports = router;
