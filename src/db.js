@@ -2,10 +2,10 @@ require("dotenv").config();
 const { Sequelize } = require("sequelize");
 const fs = require("fs"); 
 const path = require("path");
-//const {POSTGRES_URL} = process.env; 
+//const {POSTGRES_URL_URL} = process.env; 
 
 console.log(process.env.DATABASE_URL);
-const sequelize = new Sequelize(process.env.POSTGRES_URL, {
+const sequelize = new Sequelize(process.env.POSTGRES_URL_URL, {
   dialectOptions: {
     ssl: {
       require: true,
