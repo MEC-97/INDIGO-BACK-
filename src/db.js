@@ -2,14 +2,14 @@ require("dotenv").config();
 const { Sequelize } = require("sequelize");
 const fs = require("fs"); 
 const path = require("path");
-//const {DATABASE_URL} = process.env;
+//const {POSTGRES_URL} = process.env; 
 
-// Utiliza la variable de entorno DATABASE_URL para la configuración de Sequelize
-const sequelize = new Sequelize(process.env.DATABASE_URL, { 
+console.log(process.env.DATABASE_URL);
+const sequelize = new Sequelize(process.env.POSTGRES_URL, {
   dialectOptions: {
     ssl: {
       require: true,
-      rejectUnauthorized: false, // Nota: Esto puede ser un riesgo de seguridad en producción.
+      rejectUnauthorized: false,
     },
   },
 });
