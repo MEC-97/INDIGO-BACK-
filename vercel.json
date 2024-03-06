@@ -8,8 +8,8 @@
     ],
     "routes": [
         {
-            "src": "/experiencias",
-            "dest": "/experiencias"
+            "src": "/(.*)",
+            "dest": "/"
             
         }
     ]
