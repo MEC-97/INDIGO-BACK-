@@ -100,6 +100,69 @@ async function traducciones(req, res) {
   }
 }
 
+async function actualizarExperienciaPorId(req, res) {
+  const { id } = req.params;
+ 
+  try {
+     // Check if the experience exists
+     const experiecia = await Experiencias.findByPk(id);
+     if (!experiecia) {
+       return res.status(404).json({ mensaje: 'Experiecia no encontrada' });
+     }
+ 
+     // Extract the fields to update from the request body
+     const {
+       nombre,
+       nombrein,
+       nombrepor,
+       imgcard,
+       imggaleria,
+       imgdetalle,
+       texto,
+       textoin,
+       textopor,
+       presentacion1,
+       presentacion1in,
+       presentacion1por,
+       presentacion2,
+       presentacion2in,
+       presentacion2por,
+     } = req.body;
+ 
+     // Update the experience
+     const updatedExperiencia = await Experiencias.update({
+       nombre,
+       nombrein,
+       nombrepor,
+       imgcard,
+       imggaleria,
+       imgdetalle,
+       texto,
+       textoin,
+       textopor,
+       presentacion1,
+       presentacion1in,
+       presentacion1por,
+       presentacion2,
+       presentacion2in,
+       presentacion2por,
+     }, {
+       where: { id }
+     });
+ 
+     if (updatedExperiencia[0] === 0) {
+       // No rows were updated, likely because no experience with the given ID exists
+       return res.status(404).json({ mensaje: 'Experiecia no encontrada' });
+     }
+ 
+     // Return success response
+     res.status(200).json({ mensaje: 'Experiecia actualizada exitosamente' });
+  } catch (error) {
+     console.error(error);
+     res.status(500).json({ mensaje: 'Error al actualizar la experiecia' });
+  }
+ }
 
 
-module.exports = {getProducts, obtenerExperienciaPorId , crearProducto, traducciones }
+
+module.exports = {getProducts, obtenerExperienciaPorId , crearProducto, traducciones, actualizarExperienciaPorId}
