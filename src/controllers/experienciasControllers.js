@@ -60,7 +60,7 @@ async function obtenerExperienciaPorId(req, res) {
 
 const crearProducto = async (req, res) => {
   try {
-    const { nombre, nombrein, nombrepor, imgcard, imggaleria, imgdetalle, texto, textoin, textopor, presentacion1, presentacion1in, presentacion1por, presentacion2, presentacion2in, presentacion2por} = req.body;
+const { nombre, nombrein, nombrepor, imgcard, imggaleria, imgdetalle, texto, textoin, textopor, presentacion1, presentacion1in, presentacion1por, presentacion2, presentacion2in, presentacion2por, reservaes, reservain, reservapor, textocarruseles, textocarruselin, textocarruselpor } = req.body;
 
     const newExperiencia = await Experiencias.create({
       nombre,
@@ -78,6 +78,12 @@ const crearProducto = async (req, res) => {
       presentacion2,
       presentacion2in,
       presentacion2por,
+      reservaes, 
+      reservain, 
+      reservapor, 
+      textocarruseles, 
+      textocarruselin, 
+      textocarruselpor
     });
     
    console.log(Object.keys(newExperiencia)); 
@@ -91,7 +97,7 @@ const crearProducto = async (req, res) => {
 async function traducciones(req, res) {
   try {
     const experiecias = await Experiencias.findAll({
-      attributes: ['nombre', 'nombrein', 'nombrepor', 'texto', 'textoin', 'textopor', "presentacion1", "presentacion1in", "presentacion1por", "presentacion2", "presentacion2in", "presentacion2por"], 
+      attributes: ['nombre', 'nombrein', 'nombrepor', 'texto', 'textoin', 'textopor', "presentacion1", "presentacion1in", "presentacion1por", "presentacion2", "presentacion2in", "presentacion2por", "reservaes", "reservain", "reservapor", "textocarruseles", "textocarruselin", "textocarruselpor"], 
     });
     res.json(experiecias);
   } catch (error) {
@@ -127,6 +133,12 @@ async function actualizarExperienciaPorId(req, res) {
        presentacion2,
        presentacion2in,
        presentacion2por,
+       reservaes, 
+       reservain, 
+       reservapor, 
+       textocarruseles, 
+       textocarruselin, 
+       textocarruselpor
      } = req.body;
  
      // Update the experience
@@ -146,6 +158,12 @@ async function actualizarExperienciaPorId(req, res) {
        presentacion2,
        presentacion2in,
        presentacion2por,
+       reservaes,
+       reservain,
+       reservapor,
+       textocarruseles,
+       textocarruselin, 
+       textocarruselpor
      }, {
        where: { id }
      });

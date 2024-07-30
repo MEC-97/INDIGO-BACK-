@@ -68,6 +68,30 @@ module.exports = (sequelize) => {
         type: DataTypes.TEXT, 
         allowNull: true 
       },
+      reservaes: { 
+        type: DataTypes.TEXT, 
+        allowNull: true 
+      },
+      reservain: { 
+        type: DataTypes.TEXT, 
+        allowNull: true 
+      },
+      reservapor : { 
+        type: DataTypes.TEXT, 
+        allowNull: true 
+      },
+      textocarruseles: { 
+        type: DataTypes.TEXT, 
+        allowNull: true 
+      },
+      textocarruselin: { 
+        type: DataTypes.TEXT, 
+        allowNull: true 
+      },
+      textocarruselpor: { 
+        type: DataTypes.TEXT, 
+        allowNull: true 
+      },
     });
   
     return Experiencias;
