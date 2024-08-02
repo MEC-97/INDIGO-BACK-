@@ -90,7 +90,7 @@ const { nombre, nombrein, nombrepor, imgcard, imggaleria, imgdetalle, texto, tex
     res.status(201).json(newExperiencia);
   } catch (error) {
     console.error('Error al crear un nueva experiecias:', error);
-    res.status(500).json({ error: 'Error al crear un nueva experiecias' });
+    res.status(500).json({ error: 'Error al crear un nueva experiecias:', error});
   }
 };
 
